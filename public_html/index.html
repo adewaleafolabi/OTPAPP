@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Token</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="js/libs/jquery/jquery.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                $('#genBtn').click(function() {
+                    var c = $("#boxes li");
+                    for (var i = 0; i < c.length; i++) {
+                        $(c[i]).html("<img src='img/ajax-loader.gif' />");
+                    }
+                    $.get("http://77.237.250.117/OTPService/index.php?action=new", null, function(data) {
+                        var j = (data);
+                        var c = $("#boxes li");
+                        for (var i = 0; i < j.length; i++) {
+                            $(c[i]).text(j[i]);
+                        }
+                    }, "text");
+                });
+            });
+        </script>
+        <style type="text/css">
+            #boxes{width:100%;display: block;}
+            #boxes li {
+                float:left;
+                border: 1px solid #ccc;
+                border-collapse: collapse;
+                width :5%;
+                padding: 1%;
+                margin-right:5%;
+                height:50px;
+                font-size: 2em;
+                background-color: lightskyblue;
+                color:#000000;
+                list-style-type: none;
+                display: block;
+                text-align: center;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                -webkit-box-shadow: #cccccc 5px 5px 5px;
+                -moz-box-shadow: #cccccc 5px 5px 5px; 
+                box-shadow: #cccccc 5px 5px 5px;
+
+
+            }
+            #genBtn{
+               
+                margin:0 auto;
+                margin-top:100px;
+                display: block;
+                background-color: #FF0000;
+                border-radius: 50% / 0 60% 0;
+                display: block;
+                height: 86px;
+                width: 140px;
+                border:0px;
+                text-decoration: none;
+                text-align: center;
+                line-height: 50%;
+                color:#000000;
+                font-weight: bolder;
+                background: repeating-linear-gradient(
+                    45deg,
+                    lightskyblue,
+                    lightskyblue 10px,
+                    white 10px,
+                    white 20px
+                    );
+                 border: 1px solid #87CEFA;
+                border-collapse: collapse;
+
+            }
+
+            .container{
+                width:80%;
+                margin: 0 auto;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="img/logo.jpg"/>
+            <div class="displayHolder">
+                <ul id="boxes">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div style="float: left;display: block;width: 60%;margin: 0 auto; ">
+                <button id="genBtn"> Generate</button>
+            </div>
+        </div>
+    </body>
+
+
+
+</html>
